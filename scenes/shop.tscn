@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dxhgcbk2lo70g"]
 
 [ext_resource type="Script" uid="uid://dgv6rjylid345" path="res://scripts/shop.gd" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://68tjp36sl8y7" path="res://assets/icon.svg" id="2_xfvoa"]
 
 [node name="shopItems" type="Node2D" unique_id=358231648]
 position = Vector2(-1, 0)
@@ -11,5 +12,8 @@ offset_left = -66.0
 offset_top = -67.0
 offset_right = 68.0
 offset_bottom = 67.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1924199301]
+texture = ExtResource("2_xfvoa")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

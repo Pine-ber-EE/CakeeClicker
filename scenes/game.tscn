@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://0g1xk6ovxqby" path="res://assets/eggicon.png" id="7_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://dsxlmitd2qq6n" path="res://assets/milkicon.png" id="8_vtaks"]
 [ext_resource type="Texture2D" uid="uid://eoe3y20hhpgd" path="res://assets/wheaticon.png" id="9_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://dxhgcbk2lo70g" path="res://scenes/shop.tscn" id="10_vtaks"]
 
 [node name="game" type="Node2D" unique_id=444922230]
 script = ExtResource("1_uwrxv")
@@ -71,6 +72,103 @@ position = Vector2(-243, -274)
 position = Vector2(-24.4375, -10.580024)
 scale = Vector2(0.16788116, 0.16788116)
 texture = ExtResource("9_kvpfn")
+
+[node name="diaryShop" type="ScrollContainer" parent="." unique_id=1250748488]
+custom_minimum_size = Vector2(200, 200)
+offset_left = -572.0
+offset_top = 122.0
+offset_right = -15.0
+offset_bottom = 322.0
+
+[node name="GridContainer" type="GridContainer" parent="diaryShop" unique_id=830094744]
+custom_minimum_size = Vector2(1150, 200)
+custom_maximum_size = Vector2(1150, 200)
+layout_mode = 2
+
+[node name="+1cow" parent="diaryShop/GridContainer" unique_id=358231648 instance=ExtResource("10_vtaks")]
+position = Vector2(106, 101)
+
+[node name="Label" type="Label" parent="diaryShop/GridContainer/+1cow" unique_id=2055399510]
+offset_left = 12.0
+offset_top = -78.0
+offset_right = 93.0
+offset_bottom = -55.0
+text = "+1  moo"
+
+[node name="+1chicken" parent="diaryShop/GridContainer" unique_id=1765482172 instance=ExtResource("10_vtaks")]
+position = Vector2(276, 101)
+
+[node name="Label" type="Label" parent="diaryShop/GridContainer/+1chicken" unique_id=419237408]
+offset_left = -1.0
+offset_top = -78.0
+offset_right = 85.0
+offset_bottom = -55.0
+text = "+ 1 chicken"
+
+[node name="vacinnes" parent="diaryShop/GridContainer" unique_id=1439765243 instance=ExtResource("10_vtaks")]
+position = Vector2(445, 101)
+
+[node name="Label" type="Label" parent="diaryShop/GridContainer/vacinnes" unique_id=2136938088]
+offset_left = -16.0
+offset_top = -87.0
+offset_right = 89.0
+offset_bottom = -38.0
+text = "+ 1 milk & egg
+per click"
+horizontal_alignment = 1
+
+[node name="autoBaker" parent="diaryShop/GridContainer" unique_id=623331163 instance=ExtResource("10_vtaks")]
+position = Vector2(613, 101)
+
+[node name="gardenShop" type="ScrollContainer" parent="." unique_id=1319118312]
+custom_minimum_size = Vector2(200, 200)
+offset_left = 19.0
+offset_top = 122.0
+offset_right = 583.0
+offset_bottom = 322.0
+
+[node name="GridContainer" type="GridContainer" parent="gardenShop" unique_id=1543327999]
+custom_minimum_size = Vector2(1150, 200)
+custom_maximum_size = Vector2(1150, 200)
+layout_mode = 2
+
+[node name="scythe" parent="gardenShop/GridContainer" unique_id=1521771028 instance=ExtResource("10_vtaks")]
+position = Vector2(106, 101)
+
+[node name="Label" type="Label" parent="gardenShop/GridContainer/scythe" unique_id=136915076]
+offset_left = -3.0
+offset_top = -90.0
+offset_right = 102.0
+offset_bottom = -41.0
+text = "harvest +10
+wheat per
+click"
+horizontal_alignment = 1
+
+[node name="moreland" parent="gardenShop/GridContainer" unique_id=2125710520 instance=ExtResource("10_vtaks")]
+position = Vector2(276, 101)
+
+[node name="Label" type="Label" parent="gardenShop/GridContainer/moreland" unique_id=1733956550]
+offset_left = -1.0
+offset_top = -78.0
+offset_right = 85.0
+offset_bottom = -55.0
+text = "+ 1 storage"
+
+[node name="gmo" parent="gardenShop/GridContainer" unique_id=2105323430 instance=ExtResource("10_vtaks")]
+position = Vector2(445, 101)
+
+[node name="Label" type="Label" parent="gardenShop/GridContainer/gmo" unique_id=1116448652]
+offset_left = -16.0
+offset_top = -87.0
+offset_right = 89.0
+offset_bottom = -38.0
+text = "+ 1 wheat per
+second"
+horizontal_alignment = 1
+
+[node name="autoBaker" parent="gardenShop/GridContainer" unique_id=145564952 instance=ExtResource("10_vtaks")]
+position = Vector2(613, 101)
 
 [connection signal="button_down" from="diaryButton/Button" to="diaryButton" method="_on_button_button_down"]
 [connection signal="button_up" from="diaryButton/Button" to="diaryButton" method="_on_button_button_up"]
