@@ -33,6 +33,11 @@ func _process(delta: float) -> void:
 		timer = 0
 		tick()
 	
+	#update other scenes w/ variables
+	$counters/eggCounter.amount = eggs
+	$counters/milkCounter.amount = milk
+	$counters/wheatCounter.amount = wheat
+	
 func diaryClicked():
 	milk = milk + (cow*mc)/1
 	eggs = eggs + (chickens*ec)/1

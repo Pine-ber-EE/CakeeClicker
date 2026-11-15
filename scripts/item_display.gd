@@ -13,8 +13,8 @@ func _process(delta: float) -> void:
 	pass
 	
 	processNum(amount)
-	print(amount)
-	amount=amount+10000000
+	#print(amount)
+	#(test) amount=amount+10000000
 
 	$Label.text="x "+numString
 	

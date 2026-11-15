@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ktyiociuhbu6" path="res://assets/wheat.png" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://bt24itkiyslob" path="res://scripts/wheat_button.gd" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d0085kv5yfhpi" path="res://scenes/item_display.tscn" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://0g1xk6ovxqby" path="res://assets/eggicon.png" id="7_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dsxlmitd2qq6n" path="res://assets/milkicon.png" id="8_vtaks"]
+[ext_resource type="Texture2D" uid="uid://eoe3y20hhpgd" path="res://assets/wheaticon.png" id="9_kvpfn"]
 
 [node name="game" type="Node2D" unique_id=444922230]
 script = ExtResource("1_uwrxv")
@@ -43,8 +46,31 @@ position = Vector2(263.00003, -46)
 scale = Vector2(0.6740196, 0.67401946)
 texture = ExtResource("3_lbhrr")
 
-[node name="itemDisplay" parent="." unique_id=1443899878 instance=ExtResource("6_p57ef")]
+[node name="counters" type="Node2D" parent="." unique_id=2130804365]
+
+[node name="eggCounter" parent="counters" unique_id=1443899878 instance=ExtResource("6_p57ef")]
 position = Vector2(-472, -274)
+
+[node name="Sprite2D2" type="Sprite2D" parent="counters/eggCounter" unique_id=1588967547]
+position = Vector2(-27.000008, -2.9999967)
+scale = Vector2(0.13284752, 0.13284752)
+texture = ExtResource("7_0tnpc")
+
+[node name="milkCounter" parent="counters" unique_id=1432872059 instance=ExtResource("6_p57ef")]
+position = Vector2(-357, -274)
+
+[node name="Sprite2D2" type="Sprite2D" parent="counters/milkCounter" unique_id=310465488]
+position = Vector2(-24.000002, -5.9999905)
+scale = Vector2(0.20291485, 0.20291485)
+texture = ExtResource("8_vtaks")
+
+[node name="wheatCounter" parent="counters" unique_id=1263896325 instance=ExtResource("6_p57ef")]
+position = Vector2(-243, -274)
+
+[node name="Sprite2D2" type="Sprite2D" parent="counters/wheatCounter" unique_id=1614980221]
+position = Vector2(-24.4375, -10.580024)
+scale = Vector2(0.16788116, 0.16788116)
+texture = ExtResource("9_kvpfn")
 
 [connection signal="button_down" from="diaryButton/Button" to="diaryButton" method="_on_button_button_down"]
 [connection signal="button_up" from="diaryButton/Button" to="diaryButton" method="_on_button_button_up"]
