@@ -1,7 +1,7 @@
 extends Node2D
 signal buy
 var amt = 0
-var maxAmt = 99
+var maxAmt
 var avaliable = false
 var cost = 50
 var money = 0 #remember to make game.gd update this
@@ -20,10 +20,18 @@ func _process(delta: float) -> void:
 		avaliable = false
 	else:
 		avaliable = true
+		
+	if avaliable:
+		modulate.a=1
+		$Label2.show()
+	else:
+		modulate.a=0.5
+		$Label2.hide()
 
 
 func _on_button_pressed() -> void:
 	if avaliable:
 		buy.emit()
 	else:
+		print("no!")
 		pass #set brightness when i add that
