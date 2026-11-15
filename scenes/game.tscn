@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cxr66umn8rhho" path="res://assets/diary.png" id="3_iywne"]
 [ext_resource type="Texture2D" uid="uid://ktyiociuhbu6" path="res://assets/wheat.png" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://bt24itkiyslob" path="res://scripts/wheat_button.gd" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://d0085kv5yfhpi" path="res://scenes/item_display.tscn" id="6_p57ef"]
 
 [node name="game" type="Node2D" unique_id=444922230]
 script = ExtResource("1_uwrxv")
@@ -41,6 +42,9 @@ offset_bottom = 79.999985
 position = Vector2(263.00003, -46)
 scale = Vector2(0.6740196, 0.67401946)
 texture = ExtResource("3_lbhrr")
+
+[node name="itemDisplay" parent="." unique_id=1443899878 instance=ExtResource("6_p57ef")]
+position = Vector2(-472, -274)
 
 [connection signal="button_down" from="diaryButton/Button" to="diaryButton" method="_on_button_button_down"]
 [connection signal="button_up" from="diaryButton/Button" to="diaryButton" method="_on_button_button_up"]

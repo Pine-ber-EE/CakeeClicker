@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d0085kv5yfhpi"]
+
+[ext_resource type="Script" uid="uid://bfabg2pjrps36" path="res://scripts/item_display.gd" id="1_ho72g"]
+[ext_resource type="Texture2D" uid="uid://68tjp36sl8y7" path="res://assets/icon.svg" id="2_j3ar2"]
+
+[node name="itemDisplay" type="Node2D" unique_id=1443899878]
+script = ExtResource("1_ho72g")
+
+[node name="Label" type="Label" parent="." unique_id=958500248]
+offset_left = 6.0
+offset_top = -12.0
+offset_right = 46.0
+offset_bottom = 11.0
+text = "x 000"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1541410892]
+position = Vector2(-28.000002, 0)
+scale = Vector2(0.3359375, 0.3359375)
+texture = ExtResource("2_j3ar2")
