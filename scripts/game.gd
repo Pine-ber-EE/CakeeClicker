@@ -18,12 +18,15 @@ var cake = 0
 var autobaker = 0
 
 var timer = 0
+var shaketimer = 9
+var shaketimes = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 	$diaryButton.Dclick.connect(diaryClicked)
 	$wheatButton.Wclick.connect(wheatClicked)
+	$bakeButton.Cclick.connect(cakeClicked)
 	
 	setShopD()
 	setShopW()
@@ -38,14 +41,23 @@ func _process(delta: float) -> void:
 		timer = 0
 		tick()
 	
+	if(wheat<3 || eggs<2 || milk<1):
+		$bakeButton.modulate.a=0.5
+	else:
+		$bakeButton.modulate.a=1
+	
 	#update other scenes w/ variables
 	$counters/eggCounter.amount = eggs
 	$counters/milkCounter.amount = milk
 	$counters/wheatCounter.amount = wheat
+	$counters/cakeCounter.amount = cake
 	
 	setShopD2()
 	setShopW2()
 	setShopG2()
+	
+	shaketimerfunc()
+	shaketimer=shaketimer+delta*20
 	
 func diaryClicked():
 	milk = milk + (cow*mc)/1
@@ -58,6 +70,17 @@ func wheatClicked():
 	print("wheatClicked")
 	print("wheat: "+str(wheat))
 	
+func cakeClicked():
+	#3 wheat, 2 egg, 1 milk = cake
+	if(wheat<3 || eggs<2 || milk<1):
+		print("u broke")
+		shake()
+	else:
+		cake=cake+1
+		wheat = wheat-3
+		eggs = eggs -2
+		milk = milk - 1
+	
 func tick():
 	milk = milk + (cow*mt)/1
 	eggs = eggs + (chickens*et)/1
@@ -65,14 +88,91 @@ func tick():
 	print("onetick")
 	print("eggs: "+ str(eggs)+ " milk: " + str(milk)+ " wheat: "+str(wheat))
 	
+
+
+
+
+
+
+
+
+
 func buy(itemID):
 	print("hi")
 	print(itemID)
 	#itemID 1 is plus a chicken
+	#2 is plus cow
+	#3 is vacinnes
+	#4 is feed
 	if(itemID == 1):
 		chickens=chickens+1
 		print("bought!")
-		
+	#5 is gmo
+	#6 is scythe
+	#7 is moreland
+	#8 is bettersoil
+	
+	#9 is autobake
+	#10 is fasterbake
+	#11 is autoclicker
+	#12 is autoclicker++
+
+
+
+
+
+
+
+
+
+
+
+func shake():
+	shaketimer=0
+	shaketimes=10
+
+func shaketimerfunc():
+	if(shaketimer<1):
+		if(shaketimes >=10):
+			$Camera2D.position = Vector2(randi_range(-5,5), randi_range(-10,10))
+			shaketimes = shaketimes -1
+	elif(shaketimer<2):
+		if(shaketimes >=9):
+			$Camera2D.position = Vector2(randi_range(-5,5), randi_range(-10,10))
+			shaketimes = shaketimes -1
+	elif(shaketimer<3):
+		if(shaketimes >=8):
+			$Camera2D.position = Vector2(randi_range(-5,5), randi_range(-10,10))
+			shaketimes = shaketimes -1
+	elif(shaketimer<4):
+		if(shaketimes >=7):
+			$Camera2D.position = Vector2(randi_range(-5,5), randi_range(-10,10))
+			shaketimes = shaketimes -1
+	elif(shaketimer<4):
+		if(shaketimes >=6):
+			$Camera2D.position = Vector2(randi_range(-5,5), randi_range(-10,10))
+			shaketimes = shaketimes -1
+	elif(shaketimer<5):
+		if(shaketimes >=5):
+			$Camera2D.position = Vector2(0, 0)
+			shaketimes = shaketimes -1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func setShopD():
 	$"TabContainer/diaryShop/GridContainer/+1chicken".maxAmt=999
 	$"TabContainer/diaryShop/GridContainer/+1chicken".cost=10
@@ -100,23 +200,28 @@ func setShopW():
 	$TabContainer/gardenShop/GridContainer/scythe.buy.connect(buy.bind(6))
 	
 	$TabContainer/gardenShop/GridContainer/moreland.maxAmt=999
-	$TabContainer/gardenShop/GridContainer/moreland.cost=6
+	$TabContainer/gardenShop/GridContainer/moreland.cost=2
 	$TabContainer/gardenShop/GridContainer/moreland.buy.connect(buy.bind(7))
 	
 	$TabContainer/gardenShop/GridContainer/bettersoil.maxAmt=999
+	$TabContainer/gardenShop/GridContainer/bettersoil.maxAmt=5
 	$TabContainer/gardenShop/GridContainer/bettersoil.buy.connect(buy.bind(8))
 	
 func setShopG():
 	$TabContainer/generalShop/GridContainer/autobake.maxAmt=1
+	$TabContainer/generalShop/GridContainer/autobake.cost=100
 	$TabContainer/generalShop/GridContainer/autobake.buy.connect(buy.bind(9))
 	
 	$TabContainer/generalShop/GridContainer/fasterbake.maxAmt=1
+	$TabContainer/generalShop/GridContainer/fasterbake.cost = 150
 	$TabContainer/generalShop/GridContainer/fasterbake.buy.connect(buy.bind(10))
 	
 	$TabContainer/generalShop/GridContainer/autoclicker.maxAmt=10
+	$TabContainer/generalShop/GridContainer/autoclicker.maxAmt=200
 	$TabContainer/generalShop/GridContainer/autoclicker.buy.connect(buy.bind(11))
 	
 	$"TabContainer/generalShop/GridContainer/autoclicker++".maxAmt=10
+	$"TabContainer/generalShop/GridContainer/autoclicker++".cost=250
 	$"TabContainer/generalShop/GridContainer/autoclicker++".buy.connect(buy.bind(12))
 
 
