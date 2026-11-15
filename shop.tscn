@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dxhgcbk2lo70g"]
+
+[ext_resource type="Script" uid="uid://dgv6rjylid345" path="res://shop.gd" id="1_viryw"]
+
+[node name="shopItems" type="Node2D" unique_id=358231648]
+position = Vector2(-1, 0)
+script = ExtResource("1_viryw")
+
+[node name="Button" type="Button" parent="." unique_id=1046206125]
+offset_left = -66.0
+offset_top = -67.0
+offset_right = 68.0
+offset_bottom = 67.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
