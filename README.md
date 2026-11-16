@@ -1,19 +1,19 @@
 # CakeeClicker
 Clicker game - Farm eggs, milk, and wheat to make as much cake as possible!
 
-#What is this?
+## What is this?
 This belongs into the classic 'clicker games' genre, where players click things to gain currency or items, use them to buy upgrades, and so on and so forth.
 
 This particular clicker game is about making cake on a farm.
 
-#Instructions
+## Instructions
 Click the wheat and diary buttons to get wheat, eggs, and milk!
 
 Use those materials to make a cake using the bake button.
 
 Buy items in the store to help with getting more cake.
 
-#Game mechanics
+## Game mechanics
 Like other clicker games, there are shop items that can increase the rate of cake!
 
 Items that can be obtained:
@@ -28,15 +28,15 @@ Items that can be obtained:
 	
 There are also upgrades in the general store that can automatically bake cakes from avaliable materials!
 	
-#How the game looks
+## How the game looks
 ![screenshot of the game](assets/screenshot.png)
 
-#Notes
+## Notes
 A lot of future features has been planned. Stay tuned!
 
 This game was awfully fun to plan and design!
 
-#Credits
+## Credits
 Art - me!
 
 Code - me!
