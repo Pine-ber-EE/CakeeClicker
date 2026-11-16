@@ -26,13 +26,17 @@ func _process(delta: float) -> void:
 		$Label2.show()
 	else:
 		modulate.a=0.5
-		$Label2.hide()
+		if $Button.is_hovered():
+			$Label2.show()
+		else:
+			$Label2.hide()
+	$Label.text = str(cost)+" x"
 
 
 func _on_button_pressed() -> void:
 	if avaliable:
 		buy.emit()
 	else:
-		print("no!")
+		#print("no!")
 		
 		pass #set brightness when i add that

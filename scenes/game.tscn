@@ -9,10 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://dsxlmitd2qq6n" path="res://assets/milkicon.png" id="8_vtaks"]
 [ext_resource type="Texture2D" uid="uid://c77p1xw5cjsnv" path="res://assets/cake.png" id="9_dinhu"]
 [ext_resource type="Texture2D" uid="uid://eoe3y20hhpgd" path="res://assets/wheaticon.png" id="9_kvpfn"]
+[ext_resource type="Script" uid="uid://o324mk21iqud" path="res://scripts/shop_cont.gd" id="10_ca42v"]
 [ext_resource type="PackedScene" uid="uid://dxhgcbk2lo70g" path="res://scenes/shop.tscn" id="10_vtaks"]
 [ext_resource type="Texture2D" uid="uid://dke2c1h7lnigl" path="res://assets/autobake.png" id="11_dinhu"]
 [ext_resource type="Script" uid="uid://cq6trj783s57n" path="res://scripts/bake_button.gd" id="11_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://bb3wuitsw4ru6" path="res://assets/fasterbake.png" id="12_kvuet"]
+[ext_resource type="Texture2D" uid="uid://cgriwmxioec8v" path="res://assets/upgradePlaceholder.png" id="13_trtic"]
+[ext_resource type="Texture2D" uid="uid://g2dqo05ldoi" path="res://assets/placeholderWWheat.png" id="14_ir15t"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dinhu"]
 load_path = "res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"
@@ -67,6 +70,13 @@ position = Vector2(10, 0)
 scale = Vector2(0.6740196, 0.67401946)
 texture = ExtResource("3_lbhrr")
 
+[node name="Label" type="Label" parent="wheatButton" unique_id=787784221]
+offset_left = -81.0
+offset_top = 130.0
+offset_right = 92.0
+offset_bottom = 153.0
+text = "Ready to harvest: 0/10"
+
 [node name="counters" type="Node2D" parent="." unique_id=2130804365]
 
 [node name="eggCounter" parent="counters" unique_id=1443899878 instance=ExtResource("6_p57ef")]
@@ -107,6 +117,7 @@ offset_top = 96.0
 offset_right = 157.0
 offset_bottom = 327.0
 current_tab = 0
+script = ExtResource("10_ca42v")
 
 [node name="generalShop" type="ScrollContainer" parent="TabContainer" unique_id=189343035]
 custom_minimum_size = Vector2(200, 200)
@@ -135,14 +146,6 @@ text = "automatically
 bakes cake"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/generalShop/GridContainer/autobake" unique_id=1779801527]
-offset_left = -35.0
-offset_top = 45.0
-offset_right = 5.0
-offset_bottom = 68.0
-text = "75 x"
-horizontal_alignment = 1
-
 [node name="fasterbake" parent="TabContainer/generalShop/GridContainer" unique_id=1454929889 instance=ExtResource("10_vtaks")]
 position = Vector2(276, 101)
 
@@ -161,14 +164,8 @@ text = "+10 bakes
 per second"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/generalShop/GridContainer/fasterbake" unique_id=516892069]
-offset_left = -38.0
-offset_top = 46.0
-offset_right = 3.0
-offset_bottom = 69.0
-text = "150 x"
-
 [node name="autoclicker" parent="TabContainer/generalShop/GridContainer" unique_id=241053699 instance=ExtResource("10_vtaks")]
+visible = false
 position = Vector2(445, 101)
 
 [node name="Label2" type="Label" parent="TabContainer/generalShop/GridContainer/autoclicker" unique_id=2038596949]
@@ -182,6 +179,7 @@ second)"
 horizontal_alignment = 1
 
 [node name="autoclicker++" parent="TabContainer/generalShop/GridContainer" unique_id=53138824 instance=ExtResource("10_vtaks")]
+visible = false
 position = Vector2(613, 101)
 
 [node name="Label2" type="Label" parent="TabContainer/generalShop/GridContainer/autoclicker++" unique_id=731306907]
@@ -200,18 +198,24 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/gardenShop" unique_id=1543327999]
-custom_minimum_size = Vector2(1150, 200)
-custom_maximum_size = Vector2(1150, 200)
+custom_minimum_size = Vector2(725, 200)
+custom_maximum_size = Vector2(725, 200)
 layout_mode = 2
+columns = 2
 
 [node name="scythe" parent="TabContainer/gardenShop/GridContainer" unique_id=1521771028 instance=ExtResource("10_vtaks")]
 position = Vector2(106, 101)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/gardenShop/GridContainer/scythe" unique_id=282633929]
+scale = Vector2(0.22150883, 0.22150879)
+texture = ExtResource("13_trtic")
 
 [node name="Label2" type="Label" parent="TabContainer/gardenShop/GridContainer/scythe" unique_id=136915076]
 offset_left = -3.0
 offset_top = -90.0
 offset_right = 102.0
 offset_bottom = -41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "harvest +10
 wheat per
 click"
@@ -220,29 +224,42 @@ horizontal_alignment = 1
 [node name="moreland" parent="TabContainer/gardenShop/GridContainer" unique_id=2125710520 instance=ExtResource("10_vtaks")]
 position = Vector2(276, 101)
 
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/gardenShop/GridContainer/moreland" unique_id=1618603237]
+position = Vector2(1, 0.09552002)
+scale = Vector2(0.2182985, 0.22412081)
+texture = ExtResource("13_trtic")
+
 [node name="Label2" type="Label" parent="TabContainer/gardenShop/GridContainer/moreland" unique_id=1733956550]
 offset_left = -1.0
-offset_top = -78.0
+offset_top = -87.0
 offset_right = 85.0
-offset_bottom = -55.0
+offset_bottom = -64.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "+ 1 storage"
 
 [node name="gmo" parent="TabContainer/gardenShop/GridContainer" unique_id=2105323430 instance=ExtResource("10_vtaks")]
 position = Vector2(445, 101)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/gardenShop/GridContainer/gmo" unique_id=206350899]
+scale = Vector2(0.22150882, 0.22150879)
+texture = ExtResource("13_trtic")
 
 [node name="Label2" type="Label" parent="TabContainer/gardenShop/GridContainer/gmo" unique_id=1116448652]
 offset_left = -16.0
 offset_top = -87.0
 offset_right = 89.0
 offset_bottom = -38.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "+ 1 wheat per
 second"
 horizontal_alignment = 1
 
 [node name="bettersoil" parent="TabContainer/gardenShop/GridContainer" unique_id=145564952 instance=ExtResource("10_vtaks")]
+visible = false
 position = Vector2(613, 101)
 
 [node name="Label2" type="Label" parent="TabContainer/gardenShop/GridContainer/bettersoil" unique_id=491047777]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
@@ -253,48 +270,75 @@ layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/diaryShop" unique_id=830094744]
-custom_minimum_size = Vector2(1150, 200)
-custom_maximum_size = Vector2(1150, 200)
+custom_minimum_size = Vector2(725, 200)
+custom_maximum_size = Vector2(725, 200)
 layout_mode = 2
 
 [node name="+1cow" parent="TabContainer/diaryShop/GridContainer" unique_id=521139374 instance=ExtResource("10_vtaks")]
 position = Vector2(106, 101)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/diaryShop/GridContainer/+1cow" unique_id=2112320321]
+position = Vector2(-0.5, 0.5336914)
+scale = Vector2(0.2231139, 0.22311383)
+texture = ExtResource("13_trtic")
 
 [node name="Label2" type="Label" parent="TabContainer/diaryShop/GridContainer/+1cow" unique_id=2055399510]
 offset_left = 12.0
 offset_top = -78.0
 offset_right = 93.0
 offset_bottom = -55.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "+1  moo"
 
 [node name="+1chicken" parent="TabContainer/diaryShop/GridContainer" unique_id=1765482172 instance=ExtResource("10_vtaks")]
 position = Vector2(276, 101)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/diaryShop/GridContainer/+1chicken" unique_id=209256483]
+scale = Vector2(0.21508826, 0.2215087)
+texture = ExtResource("13_trtic")
 
 [node name="Label2" type="Label" parent="TabContainer/diaryShop/GridContainer/+1chicken" unique_id=419237408]
 offset_left = -1.0
 offset_top = -78.0
 offset_right = 85.0
 offset_bottom = -55.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "+ 1 chicken"
 
 [node name="vacinnes" parent="TabContainer/diaryShop/GridContainer" unique_id=1439765243 instance=ExtResource("10_vtaks")]
 position = Vector2(445, 101)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/diaryShop/GridContainer/vacinnes" unique_id=1242332094]
+scale = Vector2(0.22150885, 0.22150876)
+texture = ExtResource("13_trtic")
 
 [node name="Label2" type="Label" parent="TabContainer/diaryShop/GridContainer/vacinnes" unique_id=2136938088]
 offset_left = -16.0
 offset_top = -87.0
 offset_right = 89.0
 offset_bottom = -38.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "+ 1 milk & egg
-per click"
+per animal"
 horizontal_alignment = 1
 
 [node name="feed" parent="TabContainer/diaryShop/GridContainer" unique_id=623331163 instance=ExtResource("10_vtaks")]
+visible = false
 position = Vector2(613, 101)
 
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/diaryShop/GridContainer/feed" unique_id=659879495]
+scale = Vector2(0.22150883, 0.22150879)
+texture = ExtResource("14_ir15t")
+
 [node name="Label2" type="Label" parent="TabContainer/diaryShop/GridContainer/feed" unique_id=1979035866]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -18.0
+offset_top = -90.0
+offset_right = 89.0
+offset_bottom = -41.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "10 seconds
+of diary boost"
+horizontal_alignment = 1
 
 [node name="bakeButton" type="Node2D" parent="." unique_id=1750938785]
 position = Vector2(375, 226)

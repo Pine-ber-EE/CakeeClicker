@@ -11,15 +11,19 @@ var et = 0 #eggs per second per chicken
 var ec = 1 #eggs per click per chicken
 
 var wheat = 0
-var wt = 0 #wheat per second
-var wc = 1 #wheat per click
+var wt = 1 #wheat per second
+var wc = 1 #harvest wheat per click
+var wheatStorage = 10
+var wheatInStorage = 0
 
-var cake = 150
+var cake = 100
 var autobaker = 0
 
 var timer = 0
 var shaketimer = 9
 var shaketimes = 0
+
+var shakeLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +50,8 @@ func _process(delta: float) -> void:
 	else:
 		$bakeButton.modulate.a=1
 	
+	$wheatButton/Label.text = "Ready to harvest: "+str(wheatInStorage)+"/"+str(wheatStorage)
+
 	#update other scenes w/ variables
 	$counters/eggCounter.amount = eggs
 	$counters/milkCounter.amount = milk
@@ -62,19 +68,29 @@ func _process(delta: float) -> void:
 func diaryClicked():
 	milk = milk + (cow*mc)/1
 	eggs = eggs + (chickens*ec)/1
-	print("diaryClicked")
-	print("eggs: "+ str(eggs)+ " milk: " + str(milk))
+	#print("diaryClicked")
+	#print("eggs: "+ str(eggs)+ " milk: " + str(milk))
 
 func wheatClicked():
-	wheat = wheat + wc/1
-	print("wheatClicked")
-	print("wheat: "+str(wheat))
+	if wheatInStorage<=0:	
+		shake()
+	elif(wheatInStorage<wc/1):
+		wheat = wheat + wheatInStorage
+		wheatInStorage=0
+		#print("wheatClicked")
+		#print("wheat: "+str(wheat))
+	else:
+		wheat = wheat + wc/1
+		wheatInStorage=wheatInStorage-wc/1
+		#print("wheatClicked")
+		#print("wheat: "+str(wheat))
 	
 func cakeClicked():
 	#3 wheat, 2 egg, 1 milk = cake
 	if(wheat<3 || eggs<2 || milk<1):
-		print("u broke")
+		#print("u broke")
 		shake()
+		#shakeLabel=$wheatButton/Label
 	else:
 		cake=cake+1
 		wheat = wheat-3
@@ -84,11 +100,20 @@ func cakeClicked():
 func tick():
 	milk = milk + (cow*mt)/1
 	eggs = eggs + (chickens*et)/1
-	wheat = wheat + wt/1
+	#print(str(wheat + wt/1))
+	if (wheatInStorage + wt/1) > wheatStorage:
+		wheatInStorage=wheatStorage
+	else: 
+		wheatInStorage = wheatInStorage + wt/1
 	for i in range(autobaker):
-		cakeClicked()
-	print("onetick")
-	print("eggs: "+ str(eggs)+ " milk: " + str(milk)+ " wheat: "+str(wheat))
+		if!(wheat<3 || eggs<2 || milk<1):
+			cake=cake+1
+			wheat = wheat-3
+			eggs = eggs -2
+			milk = milk - 1
+	#print("onetick")
+	#print("eggs: "+ str(eggs)+ " milk: " + str(milk)+ " wheat: "+str(wheat))
+	#print("wheat: "+str(wheat)+" wheatInStorage: "+str(wheatInStorage)+" wheatStorage: "+str(wheatStorage))
 	
 
 
@@ -100,8 +125,8 @@ func tick():
 
 
 func buy(itemID):
-	print("hi")
-	print(itemID)
+	#print("hi")
+	#print(itemID)
 	#itemID 1 is plus a chicken
 	#2 is plus cow
 	#3 is vacinnes
@@ -109,10 +134,10 @@ func buy(itemID):
 	if(itemID == 1):
 		chickens=chickens+1
 		cake = cake-$"TabContainer/diaryShop/GridContainer/+1chicken".cost
-		print("bought!")
+		#print("bought!")
 	elif(itemID==2):
 		cow=cow+1
-		cake = $"TabContainer/diaryShop/GridContainer/+1cow".cost
+		cake = cake-$"TabContainer/diaryShop/GridContainer/+1cow".cost
 	elif(itemID==3):
 		ec=ec+1
 		mc=mc+1
@@ -128,9 +153,11 @@ func buy(itemID):
 		wt=wt+1
 		cake=cake-$TabContainer/gardenShop/GridContainer/gmo.cost
 	elif(itemID==6):
-		pass
+		wc = wheat+10
+		cake=cake-$TabContainer/gardenShop/GridContainer/scythe.cost
 	elif(itemID==7):
-		pass
+		wheatStorage = wheatStorage + 5
+		cake=cake-$TabContainer/gardenShop/GridContainer/moreland.cost
 	elif(itemID==8):
 		pass
 	
@@ -139,9 +166,11 @@ func buy(itemID):
 	#11 is autoclicker
 	#12 is autoclicker++
 	elif(itemID==9):
-		autobaker = 1
+		autobaker = autobaker+ 1
+		cake=cake-$TabContainer/generalShop/GridContainer/autobake.cost
 	elif(itemID==10):
-		autobaker = 5
+		autobaker = autobaker+ 5
+		cake=cake-$TabContainer/generalShop/GridContainer/fasterbake.cost
 	elif(itemID==11):
 		pass
 	elif(itemID==12):
@@ -218,7 +247,7 @@ func setShopD():
 	$"TabContainer/diaryShop/GridContainer/vacinnes".buy.connect(buy.bind(3))
 	
 	$"TabContainer/diaryShop/GridContainer/feed".maxAmt=1
-	$"TabContainer/diaryShop/GridContainer/feed".maxAmt=100
+	$"TabContainer/diaryShop/GridContainer/feed".cost=100
 	$"TabContainer/diaryShop/GridContainer/feed".buy.connect(buy.bind(4))
 
 func setShopW():
