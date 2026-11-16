@@ -2,24 +2,34 @@
 
 [ext_resource type="Script" uid="uid://dnb853kp7ajyc" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://c75vixnj5fqda" path="res://scripts/diary_button.gd" id="2_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://cxr66umn8rhho" path="res://assets/diary.png" id="3_iywne"]
 [ext_resource type="Texture2D" uid="uid://ktyiociuhbu6" path="res://assets/wheat.png" id="3_lbhrr"]
 [ext_resource type="Script" uid="uid://bt24itkiyslob" path="res://scripts/wheat_button.gd" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d0085kv5yfhpi" path="res://scenes/item_display.tscn" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://0g1xk6ovxqby" path="res://assets/eggicon.png" id="7_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://dsxlmitd2qq6n" path="res://assets/milkicon.png" id="8_vtaks"]
+[ext_resource type="Texture2D" uid="uid://c77p1xw5cjsnv" path="res://assets/cake.png" id="9_dinhu"]
 [ext_resource type="Texture2D" uid="uid://eoe3y20hhpgd" path="res://assets/wheaticon.png" id="9_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dxhgcbk2lo70g" path="res://scenes/shop.tscn" id="10_vtaks"]
 [ext_resource type="Script" uid="uid://cq6trj783s57n" path="res://scripts/bake_button.gd" id="11_kvpfn"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kvpfn"]
-load_path = "res://.godot/imported/bake.png-a114bf3fb5a7ce5a8c6af01df46af997.ctex"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dinhu"]
 load_path = "res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vtaks"]
+load_path = "res://.godot/imported/diary.png-4f7d175e051e9798656d9a843a7f2e30.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kvpfn"]
+load_path = "res://.godot/imported/bake.png-a114bf3fb5a7ce5a8c6af01df46af997.ctex"
+
 [node name="game" type="Node2D" unique_id=444922230]
 script = ExtResource("1_uwrxv")
+
+[node name="background" type="Sprite2D" parent="." unique_id=435466460]
+modulate = Color(0.90937066, 0.90937066, 0.90937066, 1)
+z_index = -1
+position = Vector2(17, 7.999998)
+scale = Vector2(1.1291127, 1.1102827)
+texture = SubResource("CompressedTexture2D_dinhu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1848838463]
 
@@ -37,20 +47,21 @@ offset_bottom = 145.0
 [node name="Sprite2D" type="Sprite2D" parent="diaryButton" unique_id=1351731020]
 position = Vector2(9, -9.000008)
 scale = Vector2(0.6764706, 0.6764706)
-texture = ExtResource("3_iywne")
+texture = SubResource("CompressedTexture2D_vtaks")
 
 [node name="wheatButton" type="Node2D" parent="." unique_id=1629086969]
+position = Vector2(255, -65)
 script = ExtResource("3_lnu2h")
 
 [node name="Button" type="Button" parent="wheatButton" unique_id=69981204]
 modulate = Color(1, 1, 1, 0)
-offset_left = 138.0
-offset_top = -173.00002
-offset_right = 391.0
-offset_bottom = 79.999985
+offset_left = -118.0
+offset_top = -128.00002
+offset_right = 135.0
+offset_bottom = 124.999985
 
 [node name="Sprite2D" type="Sprite2D" parent="wheatButton" unique_id=846658404]
-position = Vector2(263.00003, -69)
+position = Vector2(10, 0)
 scale = Vector2(0.6740196, 0.67401946)
 texture = ExtResource("3_lbhrr")
 
@@ -81,7 +92,12 @@ scale = Vector2(0.16788116, 0.16788116)
 texture = ExtResource("9_kvpfn")
 
 [node name="cakeCounter" parent="counters" unique_id=441993939 instance=ExtResource("6_p57ef")]
-position = Vector2(469, -276)
+position = Vector2(368, -275)
+
+[node name="Sprite2D2" type="Sprite2D" parent="counters/cakeCounter" unique_id=1580203940]
+position = Vector2(-41.000004, -4.999997)
+scale = Vector2(0.14353101, 0.14353102)
+texture = ExtResource("9_dinhu")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1223679844]
 offset_left = -577.0
@@ -253,25 +269,19 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="bakeButton" type="Node2D" parent="." unique_id=1750938785]
+position = Vector2(366, 218)
 script = ExtResource("11_kvpfn")
 
 [node name="Button" type="Button" parent="bakeButton" unique_id=1114257476]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = 249.0
-offset_top = 154.0
-offset_right = 460.0
-offset_bottom = 283.0
+offset_left = -101.0
+offset_top = -74.0
+offset_right = 110.0
+offset_bottom = 55.0
 
 [node name="Sprite2D" type="Sprite2D" parent="bakeButton" unique_id=2133313482]
-position = Vector2(355, 230)
 scale = Vector2(0.3397436, 0.33974358)
 texture = SubResource("CompressedTexture2D_kvpfn")
-
-[node name="background" type="Sprite2D" parent="." unique_id=435466460]
-z_index = -1
-position = Vector2(17, 7.999998)
-scale = Vector2(1.1291127, 1.1102827)
-texture = SubResource("CompressedTexture2D_dinhu")
 
 [connection signal="button_down" from="diaryButton/Button" to="diaryButton" method="_on_button_button_down"]
 [connection signal="button_up" from="diaryButton/Button" to="diaryButton" method="_on_button_button_up"]

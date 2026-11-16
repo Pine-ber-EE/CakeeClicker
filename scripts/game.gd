@@ -240,7 +240,7 @@ func setShopW():
 	
 func setShopG():
 	$TabContainer/generalShop/GridContainer/autobake.maxAmt=1
-	$TabContainer/generalShop/GridContainer/autobake.cost=100
+	$TabContainer/generalShop/GridContainer/autobake.cost=50
 	$TabContainer/generalShop/GridContainer/autobake.buy.connect(buy.bind(9))
 	
 	$TabContainer/generalShop/GridContainer/fasterbake.maxAmt=1
