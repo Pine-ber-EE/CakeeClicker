@@ -7,7 +7,7 @@ This belongs into the classic 'clicker games' genre, where players click things 
 This particular clicker game is about making cake on a farm.
 
 ## Instructions
-Head on out to ![pinebery.itch.io](https://pinebery.itch.io/cakeeclicker) to play the game.
+Head on out to [pinebery.itch.io](https://pinebery.itch.io/cakeeclicker) to play the game.
 
 Click the wheat and diary buttons to get wheat, eggs, and milk!
 
