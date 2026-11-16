@@ -34,4 +34,5 @@ func _on_button_pressed() -> void:
 		buy.emit()
 	else:
 		print("no!")
+		
 		pass #set brightness when i add that

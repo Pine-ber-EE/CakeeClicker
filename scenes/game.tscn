@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://c77p1xw5cjsnv" path="res://assets/cake.png" id="9_dinhu"]
 [ext_resource type="Texture2D" uid="uid://eoe3y20hhpgd" path="res://assets/wheaticon.png" id="9_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dxhgcbk2lo70g" path="res://scenes/shop.tscn" id="10_vtaks"]
+[ext_resource type="Texture2D" uid="uid://dke2c1h7lnigl" path="res://assets/autobake.png" id="11_dinhu"]
 [ext_resource type="Script" uid="uid://cq6trj783s57n" path="res://scripts/bake_button.gd" id="11_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://bb3wuitsw4ru6" path="res://assets/fasterbake.png" id="12_kvuet"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dinhu"]
 load_path = "res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"
@@ -119,26 +121,52 @@ layout_mode = 2
 [node name="autobake" parent="TabContainer/generalShop/GridContainer" unique_id=358231648 instance=ExtResource("10_vtaks")]
 position = Vector2(106, 101)
 
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/generalShop/GridContainer/autobake" unique_id=891067591]
+scale = Vector2(0.22150889, 0.22150894)
+texture = ExtResource("11_dinhu")
+
 [node name="Label2" type="Label" parent="TabContainer/generalShop/GridContainer/autobake" unique_id=840147924]
 offset_left = -10.0
 offset_top = -87.0
 offset_right = 95.0
 offset_bottom = -38.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "automatically 
 bakes cake"
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="TabContainer/generalShop/GridContainer/autobake" unique_id=1779801527]
+offset_left = -35.0
+offset_top = 45.0
+offset_right = 5.0
+offset_bottom = 68.0
+text = "75 x"
+horizontal_alignment = 1
+
 [node name="fasterbake" parent="TabContainer/generalShop/GridContainer" unique_id=1454929889 instance=ExtResource("10_vtaks")]
 position = Vector2(276, 101)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/generalShop/GridContainer/fasterbake" unique_id=1110454606]
+position = Vector2(0.5, 0.39886475)
+scale = Vector2(0.22311397, 0.22311394)
+texture = ExtResource("12_kvuet")
 
 [node name="Label2" type="Label" parent="TabContainer/generalShop/GridContainer/fasterbake" unique_id=1274995499]
 offset_left = -1.0
 offset_top = -86.0
 offset_right = 88.0
 offset_bottom = -37.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "+10 bakes
 per second"
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/generalShop/GridContainer/fasterbake" unique_id=516892069]
+offset_left = -38.0
+offset_top = 46.0
+offset_right = 3.0
+offset_bottom = 69.0
+text = "150 x"
 
 [node name="autoclicker" parent="TabContainer/generalShop/GridContainer" unique_id=241053699 instance=ExtResource("10_vtaks")]
 position = Vector2(445, 101)
@@ -269,7 +297,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="bakeButton" type="Node2D" parent="." unique_id=1750938785]
-position = Vector2(366, 218)
+position = Vector2(375, 226)
 script = ExtResource("11_kvpfn")
 
 [node name="Button" type="Button" parent="bakeButton" unique_id=1114257476]
