@@ -85,6 +85,8 @@ func tick():
 	milk = milk + (cow*mt)/1
 	eggs = eggs + (chickens*et)/1
 	wheat = wheat + wt/1
+	for i in range(autobaker):
+		cakeClicked()
 	print("onetick")
 	print("eggs: "+ str(eggs)+ " milk: " + str(milk)+ " wheat: "+str(wheat))
 	
@@ -106,16 +108,45 @@ func buy(itemID):
 	#4 is feed
 	if(itemID == 1):
 		chickens=chickens+1
+		cake = cake-$"TabContainer/diaryShop/GridContainer/+1chicken".cost
 		print("bought!")
+	elif(itemID==2):
+		cow=cow+1
+		cake = $"TabContainer/diaryShop/GridContainer/+1cow".cost
+	elif(itemID==3):
+		ec=ec+1
+		mc=mc+1
+		cake=cake-$TabContainer/diaryShop/GridContainer/vacinnes.cost
+	elif(itemID==4):
+		pass #add later
+		wheat = wheat-$TabContainer/diaryShop/GridContainer/feed.cost
 	#5 is gmo
 	#6 is scythe
 	#7 is moreland
 	#8 is bettersoil
+	elif(itemID==5):
+		wt=wt+1
+		cake=cake-$TabContainer/gardenShop/GridContainer/gmo.cost
+	elif(itemID==6):
+		pass
+	elif(itemID==7):
+		pass
+	elif(itemID==8):
+		pass
 	
 	#9 is autobake
 	#10 is fasterbake
 	#11 is autoclicker
 	#12 is autoclicker++
+	elif(itemID==9):
+		autobaker = 1
+	elif(itemID==10):
+		autobaker = 5
+	elif(itemID==11):
+		pass
+	elif(itemID==12):
+		pass
+		
 
 
 

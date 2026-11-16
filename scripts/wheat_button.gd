@@ -16,10 +16,10 @@ func _on_button_pressed() -> void:
 	Wclick.emit()
 	
 func _on_button_button_down() -> void:
-	$Sprite2D.modulate.a = 0.8
+	$Sprite2D.modulate = Color(0.8,0.8,0.8,1)
 	pass # Replace with function body.
 
 
 func _on_button_button_up() -> void:
-	$Sprite2D.modulate.a = 1
+	$Sprite2D.modulate = Color(1,1,1,1)
 	pass # Replace with function body.

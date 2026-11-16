@@ -15,6 +15,9 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kvpfn"]
 load_path = "res://.godot/imported/bake.png-a114bf3fb5a7ce5a8c6af01df46af997.ctex"
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dinhu"]
+load_path = "res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"
+
 [node name="game" type="Node2D" unique_id=444922230]
 script = ExtResource("1_uwrxv")
 
@@ -260,9 +263,15 @@ offset_right = 460.0
 offset_bottom = 283.0
 
 [node name="Sprite2D" type="Sprite2D" parent="bakeButton" unique_id=2133313482]
-position = Vector2(354, 230)
+position = Vector2(355, 230)
 scale = Vector2(0.3397436, 0.33974358)
 texture = SubResource("CompressedTexture2D_kvpfn")
+
+[node name="background" type="Sprite2D" parent="." unique_id=435466460]
+z_index = -1
+position = Vector2(17, 7.999998)
+scale = Vector2(1.1291127, 1.1102827)
+texture = SubResource("CompressedTexture2D_dinhu")
 
 [connection signal="button_down" from="diaryButton/Button" to="diaryButton" method="_on_button_button_down"]
 [connection signal="button_up" from="diaryButton/Button" to="diaryButton" method="_on_button_button_up"]
