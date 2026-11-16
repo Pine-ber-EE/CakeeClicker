@@ -28,6 +28,9 @@ Items that can be obtained:
 	
 There are also upgrades in the general store that can automatically bake cakes from avaliable materials!
 	
+#How the game looks
+![screenshot of the game](assets/screenshot.png)
+
 #Notes
 A lot of future features has been planned. Stay tuned!
 

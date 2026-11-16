@@ -16,7 +16,7 @@ var wc = 1 #harvest wheat per click
 var wheatStorage = 10
 var wheatInStorage = 0
 
-var cake = 100
+var cake = 0
 var autobaker = 0
 
 var timer = 0
