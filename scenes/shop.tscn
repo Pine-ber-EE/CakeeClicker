@@ -8,6 +8,7 @@ position = Vector2(-1, 0)
 script = ExtResource("1_lx5au")
 
 [node name="Button" type="Button" parent="." unique_id=1046206125]
+self_modulate = Color(1, 1, 1, 0)
 offset_left = -66.0
 offset_top = -67.0
 offset_right = 68.0

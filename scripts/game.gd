@@ -14,7 +14,7 @@ var wheat = 0
 var wt = 0 #wheat per second
 var wc = 1 #wheat per click
 
-var cake = 0
+var cake = 150
 var autobaker = 0
 
 var timer = 0
@@ -248,7 +248,7 @@ func setShopG():
 	$TabContainer/generalShop/GridContainer/fasterbake.buy.connect(buy.bind(10))
 	
 	$TabContainer/generalShop/GridContainer/autoclicker.maxAmt=10
-	$TabContainer/generalShop/GridContainer/autoclicker.maxAmt=200
+	$TabContainer/generalShop/GridContainer/autoclicker.cost=200
 	$TabContainer/generalShop/GridContainer/autoclicker.buy.connect(buy.bind(11))
 	
 	$"TabContainer/generalShop/GridContainer/autoclicker++".maxAmt=10
