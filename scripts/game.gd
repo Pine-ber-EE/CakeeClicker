@@ -50,6 +50,11 @@ func _ready() -> void:
 	setShopW()
 	setShopG()
 	
+	click()
+	click2()
+	click3()
+	click4()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -198,10 +203,88 @@ func checkClick():
 		$autoclicker2.otherconditions=true
 		$autoclicker3.otherconditions=true
 		$autoclicker4.otherconditions=true
+		
+	if autoclickeramt==0:
+		$autoclicker.hide()
+		$autoclicker2.hide()
+		$autoclicker3.hide()
+		$autoclicker4.hide()
+		$clickamt.hide()
+	elif autoclickeramt==1:
+		$autoclicker.show()
+		$autoclicker2.hide()
+		$autoclicker3.hide()
+		$autoclicker4.hide()
+		$clickamt.show()
+	elif autoclickeramt==2:
+		$autoclicker.show()
+		$autoclicker2.show()
+		$autoclicker3.hide()
+		$autoclicker4.hide()
+		$clickamt.show()
+	elif autoclickeramt==3:
+		$autoclicker.show()
+		$autoclicker2.show()
+		$autoclicker3.show()
+		$autoclicker4.hide()
+		$clickamt.show()
+	elif autoclickeramt==4:
+		$autoclicker.show()
+		$autoclicker2.show()
+		$autoclicker3.show()
+		$autoclicker4.show()
+		$clickamt.show()
+		
+	#Input.warp_mouse($autoclicker.clicker.position)
 
-
-
-
+func click():
+	while true:
+		var a = InputEventMouseButton.new()
+		a.button_index = MOUSE_BUTTON_LEFT
+		a.position = $autoclicker.position
+		a.pressed = true
+		Input.parse_input_event(a)
+		
+		await get_tree().create_timer(1).timeout
+		
+		a.pressed = false
+		Input.parse_input_event(a)
+func click2():
+	while true:
+		var a = InputEventMouseButton.new()
+		a.button_index = MOUSE_BUTTON_LEFT
+		a.position = $autoclicker2.position
+		a.pressed = true
+		Input.parse_input_event(a)
+		
+		await get_tree().create_timer(1).timeout
+		
+		a.pressed = false
+		Input.parse_input_event(a)
+func click3():
+	while true:
+		var m = InputEventMouseButton.new()
+		m.button_index = MOUSE_BUTTON_LEFT
+		m.position = $autoclicker3.position
+		m.pressed = true
+		Input.parse_input_event(m)
+		
+		await get_tree().create_timer(1).timeout
+		
+		m.pressed = false
+		Input.parse_input_event(m)
+func click4():
+	while true:
+		var a := InputEventMouseButton.new()
+		a.button_index = MOUSE_BUTTON_LEFT
+		a.position = $autoclicker4.position
+		a.pressed = true
+		Input.parse_input_event(a)
+		
+		await get_tree().create_timer(1).timeout
+		
+		a.pressed = false
+		Input.parse_input_event(a)
 
 
 
@@ -261,7 +344,6 @@ func buy(itemID):
 		autoclickeramt = autoclickeramt + 1
 	elif(itemID==12):
 		pass
-		
 
 
 
