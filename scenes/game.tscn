@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://blbtgokkkf4lf" path="res://assets/scythe.png" id="15_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://ug5jpyhywfpw" path="res://assets/moreland.png" id="16_1kice"]
 [ext_resource type="Texture2D" uid="uid://3g3rh5wnutmr" path="res://assets/gmo.png" id="17_5newe"]
+[ext_resource type="PackedScene" uid="uid://b3rb3psqimdew" path="res://scenes/autoclicker.tscn" id="21_5newe"]
+[ext_resource type="AudioStream" uid="uid://bvrjcel017xf2" path="res://assets/music.mp3" id="22_37s47"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dinhu"]
 load_path = "res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"
@@ -152,14 +154,13 @@ offset_right = 157.0
 offset_bottom = 327.0
 theme_override_colors/drop_mark_color = Color(0.73709875, 0.7326081, 3.85046e-07, 1)
 theme_override_colors/icon_selected_color = Color(0.70629585, 0.70066977, 3.85046e-07, 1)
-current_tab = 1
+current_tab = 0
 tab_0/title = "General Store"
 tab_1/title = "Garden Shop"
 tab_2/title = "Petco"
 script = ExtResource("10_ca42v")
 
 [node name="generalShop" type="ScrollContainer" parent="TabContainer" unique_id=189343035]
-visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 metadata/_tab_index = 0
@@ -241,6 +242,7 @@ food"
 horizontal_alignment = 1
 
 [node name="gardenShop" type="ScrollContainer" parent="TabContainer" unique_id=1319118312]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 metadata/_tab_index = 1
@@ -403,6 +405,32 @@ offset_bottom = 55.0
 [node name="Sprite2D" type="Sprite2D" parent="bakeButton" unique_id=2133313482]
 scale = Vector2(0.3397436, 0.33974358)
 texture = SubResource("CompressedTexture2D_kvpfn")
+
+[node name="autoclicker" parent="." unique_id=1804402456 instance=ExtResource("21_5newe")]
+position = Vector2(-71, -271)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1563395770]
+visible = false
+stream = ExtResource("22_37s47")
+autoplay = true
+parameters/looping = true
+
+[node name="clickamt" type="Label" parent="." unique_id=1524383026]
+offset_left = -102.0
+offset_top = -231.0
+offset_right = 77.0
+offset_bottom = -208.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "0/4 autoclickers owned"
+
+[node name="autoclicker2" parent="." unique_id=981363291 instance=ExtResource("21_5newe")]
+position = Vector2(-33, -271)
+
+[node name="autoclicker3" parent="." unique_id=99225835 instance=ExtResource("21_5newe")]
+position = Vector2(4, -269)
+
+[node name="autoclicker4" parent="." unique_id=151887255 instance=ExtResource("21_5newe")]
+position = Vector2(41, -268)
 
 [connection signal="button_down" from="diaryButton/Button" to="diaryButton" method="_on_button_button_down"]
 [connection signal="button_up" from="diaryButton/Button" to="diaryButton" method="_on_button_button_up"]

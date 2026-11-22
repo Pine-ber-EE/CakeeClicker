@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b3rb3psqimdew"]
+
+[ext_resource type="Script" uid="uid://b881ga4j0unql" path="res://scripts/autoclicker.gd" id="1_670le"]
+[ext_resource type="Texture2D" uid="uid://upge1xspbu4s" path="res://assets/click.png" id="1_yws5a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtx53"]
+radius = 38.013157
+
+[node name="autoclicker" type="Node2D" unique_id=1804402456]
+script = ExtResource("1_670le")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1992162034]
+scale = Vector2(0.15659955, 0.15659958)
+texture = ExtResource("1_yws5a")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2001862564]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=103859952]
+position = Vector2(3, -2)
+shape = SubResource("CircleShape2D_dtx53")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -20,6 +20,8 @@ var wheatInStorage = 0
 
 var cake = 0
 var autobaker = 0
+var autoclickeramt = 0
+var autoclicker = 0
 
 var timer = 0
 var shaketimer = 9
@@ -35,6 +37,15 @@ func _ready() -> void:
 	$wheatButton.Wclick.connect(wheatClicked)
 	$bakeButton.Cclick.connect(cakeClicked)
 	
+	$autoclicker.autoclick.connect(autoclick1)
+	$autoclicker2.autoclick.connect(autoclick2)
+	$autoclicker3.autoclick.connect(autoclick3)
+	$autoclicker4.autoclick.connect(autoclick4)
+	$autoclicker.notAutoclick.connect(notAutoclick1)
+	$autoclicker2.notAutoclick.connect(notAutoclick2)
+	$autoclicker3.notAutoclick.connect(notAutoclick3)
+	$autoclicker4.notAutoclick.connect(notAutoclick4)
+	
 	setShopD()
 	setShopW()
 	setShopG()
@@ -48,7 +59,12 @@ func _process(delta: float) -> void:
 	if(timer>=1):
 		timer = 0
 		tick()
-	
+		
+	checkClick()
+	print("other:"+str($autoclicker.otherconditions))
+	print("enter:"+str($autoclicker.entered))
+
+		
 	if feedtimer<10:
 		tempec = ec*5
 		tempmc=mc*5
@@ -72,6 +88,8 @@ func _process(delta: float) -> void:
 	$counters/milkCounter.amount = milk
 	$counters/wheatCounter.amount = wheat
 	$counters/cakeCounter.amount = cake
+	
+	$clickamt.text = str(autoclickeramt)+"/4 autoclickers owned"
 	
 	setShopD2()
 	setShopW2()
@@ -132,6 +150,56 @@ func tick():
 	
 
 
+func autoclick1():
+	autoclicker = 1
+func autoclick2():
+	autoclicker = 2
+func autoclick3():
+	autoclicker = 3
+func autoclick4():
+	autoclicker = 4
+
+func notAutoclick1():
+	if autoclicker == 1:
+		autoclicker = 0
+func notAutoclick2():
+	if autoclicker == 2:
+		autoclicker = 0
+func notAutoclick3():
+	if autoclicker == 3:
+		autoclicker = 0
+func notAutoclick4():
+	if autoclicker == 4:
+		autoclicker = 0
+
+func checkClick():
+	if autoclicker == 1:
+		$autoclicker.otherconditions=true
+		$autoclicker2.otherconditions=false
+		$autoclicker3.otherconditions=false
+		$autoclicker4.otherconditions=false
+	elif autoclicker == 2:
+		$autoclicker.otherconditions=false
+		$autoclicker2.otherconditions=true
+		$autoclicker3.otherconditions=false
+		$autoclicker4.otherconditions=false
+	elif autoclicker == 3:
+		$autoclicker.otherconditions=false
+		$autoclicker2.otherconditions=false
+		$autoclicker3.otherconditions=true
+		$autoclicker4.otherconditions=false
+	elif autoclicker == 4:
+		$autoclicker.otherconditions=false
+		$autoclicker2.otherconditions=false
+		$autoclicker3.otherconditions=false
+		$autoclicker4.otherconditions=true
+	else:
+		$autoclicker.otherconditions=true
+		$autoclicker2.otherconditions=true
+		$autoclicker3.otherconditions=true
+		$autoclicker4.otherconditions=true
+
+
 
 
 
@@ -190,7 +258,7 @@ func buy(itemID):
 		autobaker = autobaker+ 5
 		cake=cake-$TabContainer/generalShop/GridContainer/fasterbake.cost
 	elif(itemID==11):
-		pass
+		autoclickeramt = autoclickeramt + 1
 	elif(itemID==12):
 		pass
 		
