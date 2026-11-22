@@ -180,7 +180,7 @@ func buy(itemID):
 	#9 is autobake
 	#10 is fasterbake
 	#11 is autoclicker
-	#12 is autoclicker++
+	#12 is letthemeatcake
 	elif(itemID==9):
 		autobaker = autobaker+ 1
 		cake=cake-$TabContainer/generalShop/GridContainer/autobake.cost
@@ -296,9 +296,9 @@ func setShopG():
 	$TabContainer/generalShop/GridContainer/autoclicker.cost=200
 	$TabContainer/generalShop/GridContainer/autoclicker.buy.connect(buy.bind(11))
 	
-	$"TabContainer/generalShop/GridContainer/autoclicker++".maxAmt=10
-	$"TabContainer/generalShop/GridContainer/autoclicker++".cost=250
-	$"TabContainer/generalShop/GridContainer/autoclicker++".buy.connect(buy.bind(12))
+	$"TabContainer/generalShop/GridContainer/letthemeatcake".maxAmt=10
+	$"TabContainer/generalShop/GridContainer/letthemeatcake".cost=250
+	$"TabContainer/generalShop/GridContainer/letthemeatcake".buy.connect(buy.bind(12))
 
 
 func setShopD2():
@@ -326,4 +326,4 @@ func setShopG2():
 	
 	$TabContainer/generalShop/GridContainer/autoclicker.money=cake
 	
-	$"TabContainer/generalShop/GridContainer/autoclicker++".money=cake
+	$"TabContainer/generalShop/GridContainer/letthemeatcake".money=cake

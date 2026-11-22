@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bb3wuitsw4ru6" path="res://assets/fasterbake.png" id="12_kvuet"]
 [ext_resource type="Texture2D" uid="uid://cgriwmxioec8v" path="res://assets/upgradePlaceholder.png" id="13_trtic"]
 [ext_resource type="Texture2D" uid="uid://g2dqo05ldoi" path="res://assets/placeholderWWheat.png" id="14_ir15t"]
+[ext_resource type="Texture2D" uid="uid://cx02hfhyfgunv" path="res://assets/letthemeatcake.png" id="15_rysoc"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dinhu"]
 load_path = "res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"
@@ -185,30 +186,38 @@ per second"
 horizontal_alignment = 1
 
 [node name="autoclicker" parent="TabContainer/generalShop/GridContainer" unique_id=241053699 instance=ExtResource("10_vtaks")]
-visible = false
 position = Vector2(445, 101)
+
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/generalShop/GridContainer/autoclicker" unique_id=1915543706]
+scale = Vector2(0.2247191, 0.22471906)
+texture = ExtResource("13_trtic")
 
 [node name="Label2" type="Label" parent="TabContainer/generalShop/GridContainer/autoclicker" unique_id=2038596949]
 offset_left = -16.0
 offset_top = -94.0
 offset_right = 89.0
 offset_bottom = -19.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "autoclicker
 (1 click per
 second)"
 horizontal_alignment = 1
 
-[node name="autoclicker++" parent="TabContainer/generalShop/GridContainer" unique_id=53138824 instance=ExtResource("10_vtaks")]
-visible = false
+[node name="letthemeatcake" parent="TabContainer/generalShop/GridContainer" unique_id=53138824 instance=ExtResource("10_vtaks")]
 position = Vector2(613, 101)
 
-[node name="Label2" type="Label" parent="TabContainer/generalShop/GridContainer/autoclicker++" unique_id=731306907]
-offset_left = -12.0
-offset_top = -89.0
-offset_right = 107.0
-offset_bottom = -40.0
-text = "customize
-stuff"
+[node name="Sprite2D2" type="Sprite2D" parent="TabContainer/generalShop/GridContainer/letthemeatcake" unique_id=1119095645]
+scale = Vector2(0.22150883, 0.22150877)
+texture = ExtResource("15_rysoc")
+
+[node name="Label2" type="Label" parent="TabContainer/generalShop/GridContainer/letthemeatcake" unique_id=731306907]
+offset_left = -23.0
+offset_top = -84.0
+offset_right = 96.0
+offset_bottom = -35.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "donate
+food"
 horizontal_alignment = 1
 
 [node name="gardenShop" type="ScrollContainer" parent="TabContainer" unique_id=1319118312]
@@ -255,7 +264,7 @@ offset_top = -87.0
 offset_right = 85.0
 offset_bottom = -64.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "+ 1 storage"
+text = "+ 5 storage"
 
 [node name="gmo" parent="TabContainer/gardenShop/GridContainer" unique_id=2105323430 instance=ExtResource("10_vtaks")]
 position = Vector2(445, 101)
