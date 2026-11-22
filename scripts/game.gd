@@ -12,7 +12,7 @@ var et = 0 #eggs per second per chicken
 var ec = 1 #eggs per click per chicken
 var tempec = 1
 
-var wheat = 0
+var wheat = 1000
 var wt = 1 #wheat per second
 var wc = 1 #harvest wheat per click
 var wheatStorage = 10
@@ -53,8 +53,10 @@ func _process(delta: float) -> void:
 		tempec = ec*5
 		tempmc=mc*5
 		$background/CPUParticles2D.show()
+		$background/Sprite2D.show()
 	else:
 		$background/CPUParticles2D.hide()
+		$background/Sprite2D.hide()
 		tempec = ec
 		tempmc = mc
 	
