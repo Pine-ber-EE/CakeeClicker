@@ -4,11 +4,13 @@ var milk = 0
 var cow = 1
 var mt = 0 #milk per second per cow
 var mc = 1 #milk per click per cow
+var tempmc = 1
 
 var eggs = 0
 var chickens = 1
 var et = 0 #eggs per second per chicken
 var ec = 1 #eggs per click per chicken
+var tempec = 1
 
 var wheat = 0
 var wt = 1 #wheat per second
@@ -22,6 +24,7 @@ var autobaker = 0
 var timer = 0
 var shaketimer = 9
 var shaketimes = 0
+var feedtimer = 10
 
 var shakeLabel
 
@@ -41,9 +44,19 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer= timer+delta
+	feedtimer = feedtimer + delta
 	if(timer>=1):
 		timer = 0
 		tick()
+	
+	if feedtimer<10:
+		tempec = ec*5
+		tempmc=mc*5
+		$background/CPUParticles2D.show()
+	else:
+		$background/CPUParticles2D.hide()
+		tempec = ec
+		tempmc = mc
 	
 	if(wheat<3 || eggs<2 || milk<1):
 		$bakeButton.modulate.a=0.5
@@ -66,8 +79,8 @@ func _process(delta: float) -> void:
 	shaketimer=shaketimer+delta*20
 	
 func diaryClicked():
-	milk = milk + (cow*mc)/1
-	eggs = eggs + (chickens*ec)/1
+	milk = milk + (cow*tempmc)/1
+	eggs = eggs + (chickens*tempec)/1
 	#print("diaryClicked")
 	#print("eggs: "+ str(eggs)+ " milk: " + str(milk))
 
@@ -143,7 +156,10 @@ func buy(itemID):
 		mc=mc+1
 		cake=cake-$TabContainer/diaryShop/GridContainer/vacinnes.cost
 	elif(itemID==4):
-		pass #add later
+		if feedtimer>=10:
+			feedtimer = 0 #add later
+		else:
+			feedtimer = feedtimer - 10
 		wheat = wheat-$TabContainer/diaryShop/GridContainer/feed.cost
 	#5 is gmo
 	#6 is scythe
@@ -243,7 +259,7 @@ func setShopD():
 	$"TabContainer/diaryShop/GridContainer/+1cow".buy.connect(buy.bind(2))
 	
 	$"TabContainer/diaryShop/GridContainer/vacinnes".maxAmt=3
-	$"TabContainer/diaryShop/GridContainer/vacinnes".cost=50
+	$"TabContainer/diaryShop/GridContainer/vacinnes".cost=35
 	$"TabContainer/diaryShop/GridContainer/vacinnes".buy.connect(buy.bind(3))
 	
 	$"TabContainer/diaryShop/GridContainer/feed".maxAmt=1

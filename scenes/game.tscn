@@ -20,6 +20,10 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dinhu"]
 load_path = "res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex"
 
+[sub_resource type="Gradient" id="Gradient_gy181"]
+offsets = PackedFloat32Array(0.0064935065, 0.45454547, 0.9935065)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.37999907, 0.2439532, 0.09094057, 1)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vtaks"]
 load_path = "res://.godot/imported/diary.png-4f7d175e051e9798656d9a843a7f2e30.ctex"
 
@@ -35,6 +39,22 @@ z_index = -1
 position = Vector2(17, 7.999998)
 scale = Vector2(1.1291127, 1.1102827)
 texture = SubResource("CompressedTexture2D_dinhu")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="background" unique_id=1386402175]
+position = Vector2(-13.28479, -357.5666)
+scale = Vector2(0.035595786, 0.03601671)
+amount = 24
+texture = ExtResource("9_kvpfn")
+lifetime = 3.0999999999999996
+randomness = 0.83
+emission_shape = 3
+emission_rect_extents = Vector2(20000, 50)
+gravity = Vector2(0, 500)
+angle_min = -300.0
+angle_max = 300.0
+scale_amount_min = 0.05
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_gy181")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1848838463]
 
@@ -323,7 +343,6 @@ per animal"
 horizontal_alignment = 1
 
 [node name="feed" parent="TabContainer/diaryShop/GridContainer" unique_id=623331163 instance=ExtResource("10_vtaks")]
-visible = false
 position = Vector2(613, 101)
 
 [node name="Sprite2D2" type="Sprite2D" parent="TabContainer/diaryShop/GridContainer/feed" unique_id=659879495]
