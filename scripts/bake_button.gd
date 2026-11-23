@@ -10,7 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer = timer + delta
-	print (timer)
+	#print (timer)
 	if($Button.is_hovered()):
 		timer = 0
 		scale.x=1.1

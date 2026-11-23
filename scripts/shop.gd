@@ -13,6 +13,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if cost == 9999999999999999999999999999999999999999999999999999999999999999999999:
+		$Label.text = "? x"
+	else:
+		$Label.text = str(cost)+" x"
 	pass # Replace with function body.
 	if amt>=maxAmt:
 		avaliable = false
@@ -30,7 +34,7 @@ func _process(delta: float) -> void:
 			$Label2.show()
 		else:
 			$Label2.hide()
-	$Label.text = str(cost)+" x"
+	
 
 
 func _on_button_pressed() -> void:

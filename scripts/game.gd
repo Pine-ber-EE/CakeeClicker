@@ -12,7 +12,7 @@ var et = 0 #eggs per second per chicken
 var ec = 1 #eggs per click per chicken
 var tempec = 1
 
-var wheat = 1000
+var wheat = 0
 var wt = 1 #wheat per second
 var wc = 1 #harvest wheat per click
 var wheatStorage = 10
@@ -52,15 +52,16 @@ func _ready() -> void:
 	setShopW()
 	setShopG()
 	
-	click()
-	click2()
-	click3()
-	click4()
+	#click()
+	#click2()
+	#click3()
+	#click4()
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#$TabContainer/generalShop/GridContainer/autoclicker.Label.text = "200 x"
 	timer= timer+delta
 	feedtimer = feedtimer + delta
 	if(timer>=1):
@@ -68,7 +69,7 @@ func _process(delta: float) -> void:
 		tick()
 		
 	checkClick()
-	print("mouse:"+str($autoclicker.mousedown))
+	#print("mouse:"+str($autoclicker.mousedown))
 	#print("enter:"+str($autoclicker.entered))
 
 		
@@ -453,8 +454,8 @@ func setShopG():
 	$TabContainer/generalShop/GridContainer/fasterbake.cost = 150
 	$TabContainer/generalShop/GridContainer/fasterbake.buy.connect(buy.bind(10))
 	
-	$TabContainer/generalShop/GridContainer/autoclicker.maxAmt=10
-	$TabContainer/generalShop/GridContainer/autoclicker.cost=200
+	$TabContainer/generalShop/GridContainer/autoclicker.maxAmt=0
+	$TabContainer/generalShop/GridContainer/autoclicker.cost=9999999999999999999999999999999999999999999999999999999999999999999999
 	$TabContainer/generalShop/GridContainer/autoclicker.buy.connect(buy.bind(11))
 	
 	$"TabContainer/generalShop/GridContainer/letthemeatcake".maxAmt=10
