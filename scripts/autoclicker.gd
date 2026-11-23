@@ -46,7 +46,7 @@ func _on_area_2d_mouse_exited() -> void:
 func enter():
 	var a = abs(get_global_mouse_position().x - position.x)
 	var b = abs(get_global_mouse_position().y - position.y)
-	if a<50 && b<50:
+	if 10<a && a<50 && 10<b && b<50:
 		entered = true
 	else:
 		if !mousedown:

@@ -72,6 +72,18 @@ color_ramp = SubResource("Gradient_gy181")
 scale = Vector2(0.8883673, 0.8883673)
 texture = SubResource("CompressedTexture2D_rysoc")
 
+[node name="autoclicker" parent="." unique_id=1804402456 instance=ExtResource("21_5newe")]
+position = Vector2(-71, -271)
+
+[node name="autoclicker2" parent="." unique_id=981363291 instance=ExtResource("21_5newe")]
+position = Vector2(-33, -271)
+
+[node name="autoclicker3" parent="." unique_id=99225835 instance=ExtResource("21_5newe")]
+position = Vector2(4, -269)
+
+[node name="autoclicker4" parent="." unique_id=151887255 instance=ExtResource("21_5newe")]
+position = Vector2(41, -268)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1848838463]
 
 [node name="diaryButton" type="Node2D" parent="." unique_id=272713695]
@@ -406,12 +418,10 @@ offset_bottom = 55.0
 scale = Vector2(0.3397436, 0.33974358)
 texture = SubResource("CompressedTexture2D_kvpfn")
 
-[node name="autoclicker" parent="." unique_id=1804402456 instance=ExtResource("21_5newe")]
-position = Vector2(-71, -271)
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1563395770]
 visible = false
 stream = ExtResource("22_37s47")
+volume_db = -80.0
 autoplay = true
 parameters/looping = true
 
@@ -422,15 +432,6 @@ offset_right = 77.0
 offset_bottom = -208.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0/4 autoclickers owned"
-
-[node name="autoclicker2" parent="." unique_id=981363291 instance=ExtResource("21_5newe")]
-position = Vector2(-33, -271)
-
-[node name="autoclicker3" parent="." unique_id=99225835 instance=ExtResource("21_5newe")]
-position = Vector2(4, -269)
-
-[node name="autoclicker4" parent="." unique_id=151887255 instance=ExtResource("21_5newe")]
-position = Vector2(41, -268)
 
 [connection signal="button_down" from="diaryButton/Button" to="diaryButton" method="_on_button_button_down"]
 [connection signal="button_up" from="diaryButton/Button" to="diaryButton" method="_on_button_button_up"]

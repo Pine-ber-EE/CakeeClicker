@@ -28,6 +28,8 @@ var shaketimer = 9
 var shaketimes = 0
 var feedtimer = 10
 
+var donate = 0
+
 var shakeLabel
 
 # Called when the node enters the scene tree for the first time.
@@ -66,8 +68,8 @@ func _process(delta: float) -> void:
 		tick()
 		
 	checkClick()
-	print("other:"+str($autoclicker.otherconditions))
-	print("enter:"+str($autoclicker.entered))
+	print("mouse:"+str($autoclicker.mousedown))
+	#print("enter:"+str($autoclicker.entered))
 
 		
 	if feedtimer<10:
@@ -239,52 +241,56 @@ func checkClick():
 
 func click():
 	while true:
-		var a = InputEventMouseButton.new()
-		a.button_index = MOUSE_BUTTON_LEFT
-		a.position = $autoclicker.position
-		a.pressed = true
-		Input.parse_input_event(a)
-		
-		await get_tree().create_timer(1).timeout
-		
-		a.pressed = false
-		Input.parse_input_event(a)
+		if $autoclicker.visible:
+			var a = InputEventMouseButton.new()
+			a.button_index = MOUSE_BUTTON_LEFT
+			a.position = $autoclicker.position
+			a.pressed = true
+			Input.parse_input_event(a)
+			
+			await get_tree().process_frame
+			
+			a.pressed = false
+			Input.parse_input_event(a)
 func click2():
 	while true:
-		var a = InputEventMouseButton.new()
-		a.button_index = MOUSE_BUTTON_LEFT
-		a.position = $autoclicker2.position
-		a.pressed = true
-		Input.parse_input_event(a)
-		
-		await get_tree().create_timer(1).timeout
-		
-		a.pressed = false
-		Input.parse_input_event(a)
+		if $autoclicker2.visible:
+			var a = InputEventMouseButton.new()
+			a.button_index = MOUSE_BUTTON_LEFT
+			a.position = $autoclicker.position
+			a.pressed = true
+			Input.parse_input_event(a)
+			
+			await get_tree().process_frame
+			
+			a.pressed = false
+			Input.parse_input_event(a)
 func click3():
 	while true:
-		var m = InputEventMouseButton.new()
-		m.button_index = MOUSE_BUTTON_LEFT
-		m.position = $autoclicker3.position
-		m.pressed = true
-		Input.parse_input_event(m)
-		
-		await get_tree().create_timer(1).timeout
-		
-		m.pressed = false
-		Input.parse_input_event(m)
+		if $autoclicker3.visible:
+			var a = InputEventMouseButton.new()
+			a.button_index = MOUSE_BUTTON_LEFT
+			a.position = $autoclicker.position
+			a.pressed = true
+			Input.parse_input_event(a)
+			
+			await get_tree().process_frame
+			
+			a.pressed = false
+			Input.parse_input_event(a)
 func click4():
 	while true:
-		var a := InputEventMouseButton.new()
-		a.button_index = MOUSE_BUTTON_LEFT
-		a.position = $autoclicker4.position
-		a.pressed = true
-		Input.parse_input_event(a)
-		
-		await get_tree().create_timer(1).timeout
-		
-		a.pressed = false
-		Input.parse_input_event(a)
+		if $autoclicker4.visible:
+			var a = InputEventMouseButton.new()
+			a.button_index = MOUSE_BUTTON_LEFT
+			a.position = $autoclicker.position
+			a.pressed = true
+			Input.parse_input_event(a)
+			
+			await get_tree().process_frame
+			
+			a.pressed = false
+			Input.parse_input_event(a)
 
 
 
@@ -342,7 +348,10 @@ func buy(itemID):
 		cake=cake-$TabContainer/generalShop/GridContainer/fasterbake.cost
 	elif(itemID==11):
 		autoclickeramt = autoclickeramt + 1
+		cake=cake-$TabContainer/generalShop/GridContainer/autoclicker.cost
 	elif(itemID==12):
+		cake=cake-$TabContainer/generalShop/GridContainer/letthemeatcake.cost
+		donate = donate + 250
 		pass
 
 
