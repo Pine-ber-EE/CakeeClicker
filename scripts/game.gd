@@ -63,6 +63,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#$TabContainer/generalShop/GridContainer/autoclicker.Label.text = "200 x"
 	timer= timer+delta
+	
+	if donate > 20000000000:
+		$Label.show()
+	else:
+		$Label.hide()
+		$Label/Label.text="you have donated\n"+str(donate)+" cakes"
+	
 	feedtimer = feedtimer + delta
 	if(timer>=1):
 		timer = 0

@@ -441,6 +441,28 @@ offset_bottom = -208.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0/4 autoclickers owned"
 
+[node name="Label" type="Label" parent="." unique_id=839718919]
+offset_left = -85.0
+offset_top = -89.0
+offset_right = 86.0
+offset_bottom = -14.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "you fixed a year of 
+world hunger through
+your donations!"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Label" unique_id=322010571]
+layout_mode = 0
+offset_left = -18.0
+offset_top = 86.0
+offset_right = 185.0
+offset_bottom = 109.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "you have donated"
+horizontal_alignment = 1
+
 [connection signal="button_down" from="diaryButton/Button" to="diaryButton" method="_on_button_button_down"]
 [connection signal="button_up" from="diaryButton/Button" to="diaryButton" method="_on_button_button_up"]
 [connection signal="pressed" from="diaryButton/Button" to="diaryButton" method="_on_button_pressed"]
